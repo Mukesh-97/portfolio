@@ -1,0 +1,51 @@
+export const projects = [
+  {
+    title: "Wizdomedge Solutions – DevSecOps Platform",
+    client: "Ilios Digital Pvt Ltd",
+    desc: "Designed and deployed a secure 3-tier application architecture using DevSecOps methodologies with High Availability on AWS EKS.",
+    impact: "Scalable, secure production-grade EKS platform",
+    tech: ["AWS", "EKS", "Jenkins", "Docker", "Trivy", "Gitea", "Prometheus", "Grafana", "Ingress Controller"],
+  },
+  {
+    title: "Convergent Technologies – Microservices Platform",
+    client: "Ilios Digital Pvt Ltd",
+    desc: "Architected and deployed 20+ microservices-based applications on AWS using Kubernetes, DevSecOps practices, and GitOps deployment strategy via ArgoCD.",
+    impact: "20+ microservices deployed with GitOps",
+    tech: ["AWS", "EKS", "Jenkins", "Docker", "Trivy", "GitLab", "ArgoCD", "Prometheus", "Grafana", "EFK Stack", "Ingress Controller"],
+  },
+  {
+    title: "Greater Chennai Corporation – Facial Recognition Attendance",
+    client: "Ilios Digital Pvt Ltd",
+    desc: "Assisted in developing and deploying a Facial Recognition Attendance System using AWS AI/ML services with scalable and highly available architecture.",
+    impact: "AI-powered attendance for government use",
+    tech: ["AWS Rekognition", "Elastic Beanstalk", "EC2", "Other AWS Services"],
+  },
+  {
+    title: "TNeGA – WhatsApp Government Support System",
+    client: "Ilios Digital Pvt Ltd",
+    desc: "Deployed and managed a highly available WhatsApp support platform for Tamil Nadu Government services with infrastructure management, security hardening, and monitoring.",
+    impact: "24/7 citizen support platform for Tamil Nadu Govt",
+    tech: ["AWS", "WhatsApp API", "Monitoring", "Security Hardening"],
+  },
+  {
+    title: "AWS Operations Dashboard",
+    client: "Ilios Digital Pvt Ltd",
+    desc: "Developed an internal AWS operations dashboard automating cloud monitoring, security auditing, IAM checks, MFA validation, key rotation, Inspector vulnerability reporting, and cost optimization recommendations.",
+    impact: "Reduced manual operational effort by 60%",
+    tech: ["AWS", "CloudWatch", "IAM", "Inspector", "Python", "Bash"],
+  },
+  {
+    title: "IaC Automation Platform (AI-Powered)",
+    client: "Ilios Digital Pvt Ltd",
+    desc: "Built an Infrastructure Automation Platform with role-based access control for rapid and secure AWS resource provisioning — supporting VPC, EC2, Security Groups, Elastic IPs, Key Pairs, and more.",
+    impact: "Rapid, secure AWS provisioning with RBAC",
+    tech: ["Terraform", "AWS", "Python", "RBAC", "IaC"],
+  },
+  {
+    title: "Client Management Platform",
+    client: "Ilios Digital Pvt Ltd",
+    desc: "Built an internal platform for client onboarding, cloud account tracking, monthly billing management, agreement tracking, invoice generation, and project time management.",
+    impact: "Streamlined cloud partnership operations",
+    tech: ["AWS", "Python", "Automation", "Billing APIs"],
+  },
+];

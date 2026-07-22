@@ -1,0 +1,41 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: DoTE-Prod-4-Arts
+  region: ap-south-1
+
+vpc:
+  id: vpc-065b9cda0da400c1a
+
+  securityGroup: sg-03cf60746303948f6
+
+  subnets:
+    private:
+      ap-south-1a:
+        id: subnet-0ccd3a0ccdba0469d
+      ap-south-1b:
+        id: subnet-0f86bd851efc544eb
+      ap-south-1c:
+        id: subnet-05aa6c054d72154b2
+
+managedNodeGroups:
+  - name: t3-large-workers
+
+    instanceType: t3.large
+
+    desiredCapacity: 38
+    minSize: 38
+    maxSize: 38
+
+    volumeSize: 30
+    volumeType: gp3
+
+    amiFamily: AmazonLinux2023
+
+    privateNetworking: true
+
+    maxPodsPerNode: 110
+
+    labels:
+      workload: production
