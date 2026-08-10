@@ -631,7 +631,7 @@ export default function CloudOpsCaseStudy({ open, onClose }: Props) {
             initial={{ opacity: 0, y: 40, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.97 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="relative w-full max-w-6xl m-4 my-6 bg-slate-950 border border-slate-800 rounded-2xl flex flex-col overflow-hidden"
           >
             {/* ── Header ── */}
@@ -749,3 +749,4 @@ export default function CloudOpsCaseStudy({ open, onClose }: Props) {
     </AnimatePresence>
   );
 }
+

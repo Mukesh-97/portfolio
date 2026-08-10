@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { certifications } from "../data/certifications";
-import { BadgeCheck, Award } from "lucide-react";
+import { BadgeCheck, Award, ExternalLink } from "lucide-react";
 
 const colorMap: Record<string, {
   badge: string;
@@ -61,6 +61,7 @@ export default function Certifications() {
           {certifications.map((cert, i) => {
             const styles = colorMap[cert.color] ?? colorMap["cyan"];
             const meta = certMeta[cert.badge];
+            const isExpired = (cert as { expired?: boolean }).expired === true;
             return (
               <motion.div
                 key={cert.name}
@@ -68,39 +69,52 @@ export default function Certifications() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                className={`group bg-gradient-to-b ${styles.bg} bg-slate-900 border ${styles.border} p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-xl card-shine`}
+                className={`group bg-gradient-to-b ${styles.bg} bg-slate-900 border ${isExpired ? "border-slate-700/40 opacity-60" : styles.border} p-6 rounded-2xl transition-all duration-300 ${isExpired ? "" : "hover:-translate-y-1 hover:shadow-xl"} card-shine`}
               >
                 <div className="flex items-start gap-4">
-                  {/* Icon */}
-                  <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 ${styles.iconBg}`}>
+                  <div className={`w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 ${isExpired ? "bg-slate-800 border-slate-700 text-slate-500" : styles.iconBg}`}>
                     <BadgeCheck size={22} strokeWidth={1.6} />
                   </div>
-
-                  {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
-                      <h3 className={`font-bold text-sm text-white group-hover:${styles.text} transition leading-snug`}>
+                      <h3 className={`font-bold text-sm ${isExpired ? "text-slate-500" : "text-white group-hover:" + styles.text} transition leading-snug`}>
                         {cert.name}
                       </h3>
-                      <span className={`shrink-0 text-xs font-black px-2.5 py-1 rounded-lg border ${styles.badge}`}>
+                      <span className={`shrink-0 text-xs font-black px-2.5 py-1 rounded-lg border ${isExpired ? "bg-slate-800 text-slate-500 border-slate-700" : styles.badge}`}>
                         {cert.badge}
                       </span>
                     </div>
                     {meta && (
-                      <p className="text-slate-500 text-xs mt-1">{meta.issuer}</p>
+                      <p className="text-slate-600 text-xs mt-1">{meta.issuer}</p>
                     )}
                   </div>
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">
                   {meta && (
-                    <span className={`text-xs font-semibold ${styles.text} bg-slate-800 px-3 py-1 rounded-full`}>
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${isExpired ? "text-slate-600 bg-slate-800" : styles.text + " bg-slate-800"}`}>
                       {meta.level}
                     </span>
                   )}
-                  <span className="text-slate-500 text-xs ml-auto">
-                    Valid: {cert.validity}
-                  </span>
+                  <div className="flex items-center gap-2 ml-auto">
+                    {isExpired ? (
+                      <span className="text-xs text-slate-600 italic">Expired {cert.validity.split("–")[1].trim()}</span>
+                    ) : (
+                      <span className="text-slate-500 text-xs">Valid: {cert.validity}</span>
+                    )}
+                    {!isExpired && cert.link && (
+                      <a
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-lg border transition-all duration-200 ${styles.badge} hover:opacity-80`}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <ExternalLink size={11} />
+                        Verify
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             );

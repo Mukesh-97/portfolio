@@ -47,7 +47,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed">
-              Building scalable, secure, and highly available cloud infrastructure for enterprise and government clients.
+              Senior Cloud & DevOps Engineer — building scalable, secure AWS infrastructure and helping teams ship faster.
             </p>
           </div>
 
