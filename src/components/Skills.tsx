@@ -23,8 +23,6 @@ const skillGroups = [
     items: [
       { name: "Jenkins", level: 88 },
       { name: "ArgoCD", level: 70 },
-      { name: "GitLab CI/CD", level: 60 },
-      { name: "Gitea", level: 55 },
     ],
   },
   {
@@ -64,6 +62,8 @@ const skillGroups = [
     items: [
       { name: "Git", level: 85 },
       { name: "GitHub", level: 85 },
+      { name: "GitLab", level: 50 },
+      { name: "Gitea", level: 40 },
     ],
   },
 ];

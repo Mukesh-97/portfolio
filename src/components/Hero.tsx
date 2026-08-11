@@ -14,7 +14,7 @@ const roles = [
 const techStack = [
   { label: "Cloud", value: "AWS · GCP · Azure", color: "text-cyan-400", dot: "bg-cyan-400" },
   { label: "Containers", value: "Kubernetes · Docker", color: "text-emerald-400", dot: "bg-emerald-400" },
-  { label: "CI/CD", value: "Jenkins · ArgoCD · GitLab", color: "text-purple-400", dot: "bg-purple-400" },
+  { label: "CI/CD", value: "Jenkins · ArgoCD", color: "text-purple-400", dot: "bg-purple-400" },
   { label: "IaC", value: "Terraform · Ansible", color: "text-orange-400", dot: "bg-orange-400" },
   { label: "Monitoring", value: "Prometheus · Grafana · EFK", color: "text-rose-400", dot: "bg-rose-400" },
 ];
