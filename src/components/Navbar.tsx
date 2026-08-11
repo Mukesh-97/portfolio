@@ -39,8 +39,10 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-500 ${
-      scrolled ? "glass border-b border-white/5 shadow-2xl shadow-black/30" : "bg-transparent"
+    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+      scrolled
+        ? "bg-slate-950/98 backdrop-blur-xl border-b border-slate-800/80 shadow-xl shadow-black/30"
+        : "bg-slate-950/80 backdrop-blur-md"
     }`}>
       <div className="max-w-7xl mx-auto px-6 py-3.5 flex justify-between items-center">
 
@@ -103,7 +105,7 @@ export default function Navbar() {
         {isOpen && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="md:hidden glass border-t border-white/5 overflow-hidden">
+            className="md:hidden bg-slate-950 border-t border-slate-800 overflow-hidden">
             <div className="px-6 py-4 space-y-1">
               {navLinks.map(link => (
                 <a key={link.href} href={`#${link.href}`} onClick={() => setIsOpen(false)}

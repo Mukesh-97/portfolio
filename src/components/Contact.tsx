@@ -102,7 +102,7 @@ export default function Contact() {
                   I typically respond within 24 hours. Drop an email or copy the address.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-2.5 mb-2.5">
+                <div className="flex flex-col sm:flex-row gap-2.5">
                   <a href="mailto:mukeshravi3597@gmail.com"
                     className="group flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 px-5 py-3 rounded-xl font-semibold text-sm transition-all duration-200 shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5">
                     <Send size={14} />
@@ -116,13 +116,6 @@ export default function Contact() {
                     {copied ? <><CheckCircle size={14} /> Copied!</> : "Copy Email"}
                   </button>
                 </div>
-
-                <a href="https://www.linkedin.com/in/mukesh-r-4543b2214" target="_blank" rel="noopener noreferrer"
-                  className="group flex items-center justify-center gap-2 border border-blue-500/30 hover:border-blue-400/50 bg-blue-500/5 hover:bg-blue-500/10 px-5 py-3 rounded-xl font-semibold text-sm text-blue-400 transition-all duration-200 hover:-translate-y-0.5 w-full">
-                  <ExternalLink size={14} />
-                  Connect on LinkedIn
-                  <ArrowRight size={13} className="ml-auto group-hover:translate-x-1 transition-transform" />
-                </a>
               </div>
             </div>
 
