@@ -9,6 +9,11 @@ body {
   font-family: Inter, sans-serif;
 }
 
+/* Hide default cursor site-wide — custom cursor takes over */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 /* ── Scrollbar ───────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #0a0f1e; }

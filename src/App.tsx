@@ -8,10 +8,12 @@ import Experience from "./components/Experience";
 import Leadership from "./components/Leadership";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 export default function App() {
   return (
     <div className="bg-slate-950 text-white">
+      <CustomCursor />
       <Navbar />
       <Hero />
       <Metrics />
