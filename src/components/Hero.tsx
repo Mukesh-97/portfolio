@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { MapPin, Mail, Phone, ArrowRight, ExternalLink, Award, BadgeCheck, Download, Sparkles } from "lucide-react";
 
@@ -32,13 +32,6 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [showScroll, setShowScroll] = useState(true);
-
-  useEffect(() => {
-    const onScroll = () => setShowScroll(window.scrollY < 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     const current = roles[roleIndex];
@@ -54,8 +47,8 @@ export default function Hero() {
   }, [displayed, isDeleting, roleIndex]);
 
   return (
-    <section id="about" className="relative min-h-screen flex items-center overflow-hidden mesh-bg pt-16">
-      {/* Layered backgrounds */}
+    <section id="about" className="relative min-h-screen flex items-center mesh-bg pt-16">
+      {/* backgrounds */}
       <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
       <div className="scan-lines absolute inset-0 opacity-40 pointer-events-none" />
 
@@ -202,22 +195,6 @@ export default function Hero() {
 
       </div>
 
-      {/* Scroll indicator */}
-      <AnimatePresence>
-        {showScroll && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ delay: 2, duration: 0.4 }}
-            className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 pointer-events-none"
-          >
-            <span className="text-slate-600 text-xs tracking-widest uppercase">Scroll</span>
-            <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}
-              className="w-0.5 h-8 bg-gradient-to-b from-cyan-500/60 to-transparent rounded-full" />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
