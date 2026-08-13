@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px; /* navbar height offset for anchor links */
+}
 
 body {
   margin: 0;

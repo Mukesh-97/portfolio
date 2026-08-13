@@ -93,12 +93,10 @@ function SkillBar({ name, level, note, color }: { name: string; level: number; n
       <div className="h-1.5 bg-slate-800/80 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          viewport={{ once: true }}
+          animate={{ width: `${level}%` }}
           transition={{ duration: 1.1, ease: "easeOut", delay: 0.1 }}
           className={`h-full rounded-full bg-gradient-to-r ${t.bar} relative`}
         >
-          {/* Shimmer highlight on bar */}
           <div className="absolute right-0 top-0 bottom-0 w-3 bg-white/20 rounded-full blur-sm" />
         </motion.div>
       </div>

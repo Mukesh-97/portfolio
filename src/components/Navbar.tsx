@@ -20,26 +20,28 @@ export default function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    const observers: IntersectionObserver[] = [];
-    navLinks.forEach(({ href }) => {
-      const el = document.getElementById(href);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => { if (entry.isIntersecting) setActive(href); },
-        { rootMargin: "-10% 0px -60% 0px", threshold: 0 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
+    // Use scroll position to determine active section more reliably
+    const handleActiveSection = () => {
+      const offsets = navLinks.map(({ href }) => {
+        const el = document.getElementById(href);
+        if (!el) return { href, top: Infinity };
+        return { href, top: Math.abs(el.getBoundingClientRect().top - 80) };
+      });
+      const closest = offsets.reduce((a, b) => a.top < b.top ? a : b);
+      setActive(closest.href);
+    };
+
+    window.addEventListener("scroll", handleActiveSection, { passive: true });
+    handleActiveSection(); // set on mount
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      observers.forEach(o => o.disconnect());
+      window.removeEventListener("scroll", handleActiveSection);
     };
   }, []);
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled
         ? "bg-slate-950/98 backdrop-blur-xl border-b border-slate-800/80 shadow-xl shadow-black/30"
         : "bg-slate-950/80 backdrop-blur-md"
