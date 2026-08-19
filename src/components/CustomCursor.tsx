@@ -120,8 +120,8 @@ export default function CustomCursor() {
             style={{
               width:      size,
               height:     size,
-              background: `rgba(6,182,212,${alpha})`,
-              boxShadow:  `0 0 ${size * 2}px rgba(6,182,212,${alpha * 0.8})`,
+              background: `rgba(79,70,229,${alpha})`,
+              boxShadow:  `0 0 ${size * 2}px rgba(79,70,229,${alpha * 0.8})`,
               opacity,
               transition: "opacity 0.3s",
             }}
@@ -136,9 +136,9 @@ export default function CustomCursor() {
         style={{
           width:      hovering ? 48 : 36,
           height:     hovering ? 48 : 36,
-          border:     `1px solid rgba(6,182,212,${hovering ? 0.9 : 0.45})`,
-          boxShadow:  `0 0 ${hovering ? 18 : 8}px rgba(6,182,212,${hovering ? 0.5 : 0.18})`,
-          background: hovering ? "rgba(6,182,212,0.05)" : "transparent",
+          border:     `1px solid rgba(79,70,229,${hovering ? 0.8 : 0.35})`,
+          boxShadow:  `0 0 ${hovering ? 18 : 8}px rgba(79,70,229,${hovering ? 0.4 : 0.12})`,
+          background: hovering ? "rgba(79,70,229,0.06)" : "transparent",
           opacity,
           transition:
             "width 0.2s ease, height 0.2s ease, " +
@@ -161,8 +161,8 @@ export default function CustomCursor() {
           transform:  "translate(-50%,-50%)",
           width:      hovering ? 18 : 14,
           height:     1.5,
-          background: hovering ? "#22d3ee" : "rgba(255,255,255,0.85)",
-          boxShadow:  hovering ? "0 0 6px rgba(34,211,238,0.9)" : "none",
+          background: hovering ? "#4f46e5" : "rgba(30,21,135,0.65)",
+          boxShadow:  hovering ? "0 0 6px rgba(79,70,229,0.9)" : "none",
           borderRadius: 2,
           transition: "width 0.15s, background 0.15s, box-shadow 0.15s",
         }} />
@@ -174,8 +174,8 @@ export default function CustomCursor() {
           transform:  "translate(-50%,-50%)",
           width:      1.5,
           height:     hovering ? 18 : 14,
-          background: hovering ? "#22d3ee" : "rgba(255,255,255,0.85)",
-          boxShadow:  hovering ? "0 0 6px rgba(34,211,238,0.9)" : "none",
+          background: hovering ? "#4f46e5" : "rgba(30,21,135,0.65)",
+          boxShadow:  hovering ? "0 0 6px rgba(79,70,229,0.9)" : "none",
           borderRadius: 2,
           transition: "height 0.15s, background 0.15s, box-shadow 0.15s",
         }} />
@@ -188,8 +188,8 @@ export default function CustomCursor() {
           width:        hovering ? 5 : 3,
           height:       hovering ? 5 : 3,
           borderRadius: "50%",
-          background:   hovering ? "#22d3ee" : "white",
-          boxShadow:    hovering ? "0 0 8px rgba(34,211,238,0.9)" : "none",
+          background:   hovering ? "#4f46e5" : "#1e1b4b",
+          boxShadow:    hovering ? "0 0 8px rgba(79,70,229,0.9)" : "none",
           transition:   "all 0.15s",
         }} />
       </div>

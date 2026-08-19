@@ -39,21 +39,21 @@ function SectionHeading({ icon, title, subtitle }: { icon: React.ReactNode; titl
   return (
     <div className="mb-8">
       <div className="flex items-center gap-3 mb-2">
-        <span className="text-cyan-400">{icon}</span>
-        <h3 className="text-2xl font-black text-white">{title}</h3>
+        <span className="text-indigo-600">{icon}</span>
+        <h3 className="text-2xl font-black text-slate-900">{title}</h3>
       </div>
-      {subtitle && <p className="text-slate-400 text-sm leading-relaxed max-w-3xl">{subtitle}</p>}
+      {subtitle && <p className="text-slate-500 text-sm leading-relaxed max-w-3xl">{subtitle}</p>}
     </div>
   );
 }
 
 function Badge({ text, color = "cyan" }: { text: string; color?: "cyan" | "purple" | "emerald" | "amber" | "rose" }) {
   const map = {
-    cyan:    "bg-cyan-500/10 border-cyan-500/25 text-cyan-400",
-    purple:  "bg-purple-500/10 border-purple-500/25 text-purple-400",
-    emerald: "bg-emerald-500/10 border-emerald-500/25 text-emerald-400",
-    amber:   "bg-amber-500/10 border-amber-500/25 text-amber-400",
-    rose:    "bg-rose-500/10 border-rose-500/25 text-rose-400",
+    cyan:    "bg-indigo-100 border-indigo-200 text-indigo-700",
+    purple:  "bg-indigo-100 border-indigo-200 text-indigo-700",
+    emerald: "bg-green-100 border-green-200 text-green-700",
+    amber:   "bg-amber-100 border-amber-200 text-amber-700",
+    rose:    "bg-amber-100 border-amber-200 text-amber-700",
   };
   return (
     <span className={`inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-lg border ${map[color]}`}>
@@ -65,7 +65,7 @@ function Badge({ text, color = "cyan" }: { text: string; color?: "cyan" | "purpl
 
 function TechPill({ t }: { t: string }) {
   return (
-    <span className="bg-slate-800 text-slate-300 px-3 py-1 rounded-lg text-xs border border-slate-700/50">
+    <span className="bg-slate-100 text-slate-600 px-3 py-1 rounded-lg text-xs border border-slate-200">
       {t}
     </span>
   );
@@ -78,21 +78,21 @@ function ScreenshotSlot({ label, src }: { label: string; src?: string }) {
   
   if (src && !imageError) {
     return (
-      <div className="rounded-xl overflow-hidden border border-slate-700/50">
+      <div className="rounded-xl overflow-hidden border border-slate-200">
         <img 
           src={src} 
           alt={label} 
           className="w-full object-cover"
           onError={() => setImageError(true)}
         />
-        <p className="text-slate-500 text-xs text-center py-2 bg-slate-900">{label}</p>
+        <p className="text-slate-400 text-xs text-center py-2 bg-slate-50">{label}</p>
       </div>
     );
   }
   return (
-    <div className="rounded-xl border border-slate-700/40 border-dashed bg-slate-900/40 flex flex-col items-center justify-center gap-2 py-12">
-      <Database size={24} className="text-slate-600" />
-      <p className="text-slate-600 text-xs text-center px-4">{label}</p>
+    <div className="rounded-xl border border-slate-200 border-dashed bg-slate-50 flex flex-col items-center justify-center gap-2 py-12">
+      <Database size={24} className="text-slate-300" />
+      <p className="text-slate-400 text-xs text-center px-4">{label}</p>
     </div>
   );
 }
@@ -113,9 +113,9 @@ function OverviewSection() {
           { label: "Product",  value: "Qorvix — Personal SaaS Build" },
           { label: "Scope",    value: "Full-stack SaaS, End-to-End" },
         ].map(item => (
-          <div key={item.label} className="bg-slate-900 rounded-xl border border-slate-800 p-5">
-            <p className="text-slate-500 text-xs uppercase tracking-wider mb-1">{item.label}</p>
-            <p className="text-white font-semibold text-sm">{item.value}</p>
+          <div key={item.label} className="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+            <p className="text-slate-400 text-xs uppercase tracking-wider mb-1">{item.label}</p>
+            <p className="text-slate-800 font-semibold text-sm">{item.value}</p>
           </div>
         ))}
       </div>
@@ -123,8 +123,8 @@ function OverviewSection() {
         <ScreenshotSlot label="CloudOps — Login & Landing Page" src="/screenshots/login.png" />
         <ScreenshotSlot label="Main Dashboard — Resource Overview" src="/screenshots/dashboard.png" />
       </div>
-      <div className="bg-gradient-to-br from-cyan-500/5 to-indigo-500/5 border border-cyan-500/15 rounded-2xl p-6">
-        <p className="text-slate-300 text-sm leading-relaxed">
+      <div className="bg-gradient-to-br from-indigo-50 to-indigo-50 border border-indigo-200 rounded-2xl p-6">
+        <p className="text-slate-600 text-sm leading-relaxed">
           Built entirely solo — from IAM cross-account architecture and CIS compliance engine
           through to PDF/Excel audit report generation and Razorpay billing. Every layer of the stack was designed,
           implemented, and shipped by a single engineer. Qorvix takes its name from Latin roots:
@@ -152,18 +152,18 @@ function ProblemSection() {
       />
       <div className="space-y-3 mb-8">
         {problems.map((p, i) => (
-          <div key={i} className="flex items-start gap-3 bg-slate-900 border border-slate-800 rounded-xl p-4">
-            <span className="text-rose-400 mt-0.5 shrink-0"><XCircle size={15} /></span>
-            <p className="text-slate-300 text-sm">{p}</p>
+          <div key={i} className="flex items-start gap-3 bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+            <span className="text-rose-500 mt-0.5 shrink-0"><XCircle size={15} /></span>
+            <p className="text-slate-600 text-sm">{p}</p>
           </div>
         ))}
       </div>
-      <div className="bg-gradient-to-r from-cyan-500/10 to-indigo-500/10 border border-cyan-500/20 rounded-2xl p-6">
+      <div className="bg-gradient-to-r from-indigo-50 to-indigo-50 border border-indigo-200 rounded-2xl p-6">
         <div className="flex items-center gap-2 mb-2">
-          <CheckCircle2 size={16} className="text-cyan-400" />
-          <p className="text-cyan-300 font-bold text-sm">CloudOps solves this</p>
+          <CheckCircle2 size={16} className="text-indigo-600" />
+          <p className="text-indigo-700 font-bold text-sm">CloudOps solves this</p>
         </div>
-        <p className="text-slate-300 text-sm leading-relaxed">
+        <p className="text-slate-600 text-sm leading-relaxed">
           One platform, all clients, fraction of the cost. Real-time resource inventory, CIS compliance scanning,
           cost forecasting, and audit-grade PDF/Excel exports — built specifically for lean MSP teams.
         </p>
@@ -188,9 +188,9 @@ function ArchitectureSection() {
       />
       <div className="grid md:grid-cols-2 gap-4 mb-8">
         {features.map(f => (
-          <div key={f.title} className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center gap-2 mb-2 text-cyan-400">{f.icon}<p className="font-bold text-sm text-white">{f.title}</p></div>
-            <p className="text-slate-400 text-sm leading-relaxed">{f.desc}</p>
+          <div key={f.title} className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center gap-2 mb-2 text-indigo-600">{f.icon}<p className="font-bold text-sm text-slate-800">{f.title}</p></div>
+            <p className="text-slate-500 text-sm leading-relaxed">{f.desc}</p>
           </div>
         ))}
       </div>
@@ -202,12 +202,12 @@ function ArchitectureSection() {
         <ScreenshotSlot label="Threshold-Based Alerts Configuration" src="/screenshots/alerts.png" />
         <ScreenshotSlot label="Plan Upgrade Modal (Free → Pro)" src="/screenshots/plans.png" />
       </div>
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-        <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Plan Tiers</p>
+      <div className="bg-white border border-slate-200 rounded-xl p-5">
+        <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">Plan Tiers</p>
         <div className="grid grid-cols-4 gap-3">
           {["Free", "Starter", "Pro", "Enterprise"].map((plan, i) => (
-            <div key={plan} className={`rounded-lg p-3 text-center border ${i === 2 ? "border-cyan-500/40 bg-cyan-500/5" : "border-slate-700/50 bg-slate-800/50"}`}>
-              <p className={`text-sm font-bold ${i === 2 ? "text-cyan-400" : "text-slate-300"}`}>{plan}</p>
+            <div key={plan} className={`rounded-lg p-3 text-center border ${i === 2 ? "border-indigo-400 bg-indigo-50" : "border-slate-200 bg-slate-50"}`}>
+              <p className={`text-sm font-bold ${i === 2 ? "text-indigo-600" : "text-slate-500"}`}>{plan}</p>
             </div>
           ))}
         </div>
@@ -236,19 +236,19 @@ function InventorySection() {
         title="Resource Inventory"
         subtitle="10 AWS resource types inventoried per account, per region. S3 scanning runs asynchronously with 20 parallel workers to avoid 120s timeouts."
       />
-      <div className="overflow-x-auto rounded-xl border border-slate-800 mb-8">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 mb-8">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-slate-800 bg-slate-900/80">
-              <th className="text-left px-5 py-3 text-slate-400 font-semibold">Resource</th>
-              <th className="text-left px-5 py-3 text-slate-400 font-semibold">Data Collected</th>
+            <tr className="border-b border-slate-200 bg-slate-50">
+              <th className="text-left px-5 py-3 text-slate-500 font-semibold">Resource</th>
+              <th className="text-left px-5 py-3 text-slate-500 font-semibold">Data Collected</th>
             </tr>
           </thead>
           <tbody>
             {resources.map((r, i) => (
-              <tr key={r.resource} className={`border-b border-slate-800/50 last:border-0 ${i % 2 === 0 ? "bg-slate-900/30" : ""}`}>
-                <td className="px-5 py-3 text-cyan-400 font-semibold whitespace-nowrap">{r.resource}</td>
-                <td className="px-5 py-3 text-slate-300">{r.data}</td>
+              <tr key={r.resource} className={`border-b border-slate-100 last:border-0 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/60"}`}>
+                <td className="px-5 py-3 text-indigo-600 font-semibold whitespace-nowrap">{r.resource}</td>
+                <td className="px-5 py-3 text-slate-600">{r.data}</td>
               </tr>
             ))}
           </tbody>
@@ -286,17 +286,17 @@ function ComplianceSection() {
       </div>
       <div className="space-y-3 mb-8">
         {cisSections.map(s => (
-          <div key={s.name} className="bg-slate-900 border border-slate-800 rounded-xl p-4">
+          <div key={s.name} className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-cyan-400 font-bold text-sm">{s.name}</span>
+              <span className="text-indigo-600 font-bold text-sm">{s.name}</span>
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed">{s.checks}</p>
+            <p className="text-slate-500 text-xs leading-relaxed">{s.checks}</p>
           </div>
         ))}
       </div>
-      <div className="bg-slate-900 border border-amber-500/20 rounded-xl p-5 mb-6">
-        <p className="text-amber-400 font-bold text-sm mb-2">Key Engineering Decision: No Fake Passes</p>
-        <p className="text-slate-400 text-sm leading-relaxed">
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6">
+        <p className="text-amber-700 font-bold text-sm mb-2">Key Engineering Decision: No Fake Passes</p>
+        <p className="text-slate-600 text-sm leading-relaxed">
           The original implementation returned PASS if any CloudWatch metric filter existed — regardless of what it monitors.
           Replaced with per-check verification: find a filter whose pattern contains <em>all required keywords</em>, then
           verify a CloudWatch alarm is actually attached to that specific metric. A filter without an alarm = FAIL.
@@ -324,9 +324,9 @@ function CostSection() {
           { title: "ML Forecasting",     desc: "AWS CE GetCostForecast — 30d and 90d projections with 80% confidence bands." },
           { title: "Anomaly Detection",  desc: "2σ statistical baseline against 14-day rolling history. Flags unusual cost spikes automatically." },
         ].map(c => (
-          <div key={c.title} className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-            <p className="text-white font-bold text-sm mb-2">{c.title}</p>
-            <p className="text-slate-400 text-xs leading-relaxed">{c.desc}</p>
+          <div key={c.title} className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+            <p className="text-slate-800 font-bold text-sm mb-2">{c.title}</p>
+            <p className="text-slate-500 text-xs leading-relaxed">{c.desc}</p>
           </div>
         ))}
       </div>
@@ -348,14 +348,14 @@ function ReportsSection() {
         subtitle="Enterprise-grade exports built entirely client-side. No server-side rendering — all generated in-browser with jsPDF and xlsx."
       />
       <div className="grid md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
-              <FileText size={15} className="text-rose-400" />
+            <div className="w-8 h-8 rounded-lg bg-sky-100 flex items-center justify-center">
+              <FileText size={15} className="text-sky-600" />
             </div>
-            <p className="text-white font-bold text-sm">PDF Report</p>
+            <p className="text-slate-800 font-bold text-sm">PDF Report</p>
           </div>
-          <ul className="space-y-2 text-slate-400 text-xs leading-relaxed">
+          <ul className="space-y-2 text-slate-500 text-xs leading-relaxed">
             {[
               "Landscape A4, government audit style",
               "Navy header bands, coloured section markers",
@@ -372,14 +372,14 @@ function ReportsSection() {
             ))}
           </ul>
         </div>
-        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+        <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <Database size={15} className="text-emerald-400" />
+            <div className="w-8 h-8 rounded-lg bg-green-100 flex items-center justify-center">
+              <Database size={15} className="text-green-600" />
             </div>
-            <p className="text-white font-bold text-sm">Excel Report</p>
+            <p className="text-slate-800 font-bold text-sm">Excel Report</p>
           </div>
-          <ul className="space-y-2 text-slate-400 text-xs leading-relaxed">
+          <ul className="space-y-2 text-slate-500 text-xs leading-relaxed">
             {[
               "12 sheets covering all resource types",
               "Summary sheet first with KPI overview",
@@ -445,11 +445,11 @@ function EngineeringSection() {
   ];
 
   const colorMap: Record<string, string> = {
-    cyan:    "border-cyan-500/25 text-cyan-400 bg-cyan-500/5",
-    purple:  "border-purple-500/25 text-purple-400 bg-purple-500/5",
-    amber:   "border-amber-500/25 text-amber-400 bg-amber-500/5",
-    emerald: "border-emerald-500/25 text-emerald-400 bg-emerald-500/5",
-    rose:    "border-rose-500/25 text-rose-400 bg-rose-500/5",
+    cyan:    "border-indigo-200 text-indigo-700 bg-indigo-50",
+    purple:  "border-indigo-200 text-indigo-700 bg-indigo-50",
+    amber:   "border-amber-200 text-amber-700 bg-amber-50",
+    emerald: "border-green-200 text-green-700 bg-green-50",
+    rose:    "border-amber-200 text-amber-700 bg-amber-50",
   };
 
   return (
@@ -465,15 +465,15 @@ function EngineeringSection() {
             <div className="flex items-start gap-4">
               <span className={`text-3xl font-black leading-none opacity-40`}>{w.num}</span>
               <div className="flex-1">
-                <p className="text-white font-bold mb-3">{w.title}</p>
+                <p className="text-slate-800 font-bold mb-3">{w.title}</p>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Problem</p>
-                    <p className="text-slate-300 text-sm leading-relaxed">{w.problem}</p>
+                    <p className="text-xs text-slate-400 uppercase tracking-wider mb-1">Problem</p>
+                    <p className="text-slate-600 text-sm leading-relaxed">{w.problem}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Solution</p>
-                    <p className="text-slate-300 text-sm leading-relaxed">{w.solution}</p>
+                    <p className="text-xs text-slate-400 uppercase tracking-wider mb-1">Solution</p>
+                    <p className="text-slate-600 text-sm leading-relaxed">{w.solution}</p>
                   </div>
                 </div>
               </div>
@@ -503,16 +503,16 @@ function StackSection() {
           { label: "Frontend", items: frontend,  color: "purple"  },
           { label: "Security", items: security,  color: "emerald" },
         ].map(group => (
-          <div key={group.label} className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-            <p className="text-xs text-slate-500 uppercase tracking-widest mb-4">{group.label}</p>
+          <div key={group.label} className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+            <p className="text-xs text-slate-400 uppercase tracking-widest mb-4">{group.label}</p>
             <div className="flex flex-wrap gap-2">
               {group.items.map(t => <TechPill key={t} t={t} />)}
             </div>
           </div>
         ))}
       </div>
-      <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-        <p className="text-xs text-slate-500 uppercase tracking-widest mb-3">Architecture Decisions</p>
+      <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <p className="text-xs text-slate-400 uppercase tracking-widest mb-3">Architecture Decisions</p>
         <div className="grid md:grid-cols-2 gap-3">
           {[
             { k: "No stored AWS keys", v: "STS AssumeRole with ExternalId at every API call" },
@@ -521,8 +521,8 @@ function StackSection() {
             { k: "MySQL + SQLAlchemy ORM",  v: "ORM abstraction keeps queries portable and org-scoped by design" },
           ].map(d => (
             <div key={d.k} className="flex flex-col gap-0.5">
-              <p className="text-cyan-400 text-xs font-semibold">{d.k}</p>
-              <p className="text-slate-400 text-xs">{d.v}</p>
+              <p className="text-indigo-600 text-xs font-semibold">{d.k}</p>
+              <p className="text-slate-500 text-xs">{d.v}</p>
             </div>
           ))}
         </div>
@@ -555,19 +555,19 @@ function MetricsSection() {
       <SectionHeading icon={<BarChart3 size={22} />} title="Metrics & Takeaways" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
         {stats.map(s => (
-          <div key={s.label} className="bg-slate-900 border border-slate-800 rounded-xl p-5 text-center">
-            <p className="text-3xl font-black text-cyan-400 mb-1">{s.value}</p>
-            <p className="text-slate-400 text-xs leading-snug">{s.label}</p>
+          <div key={s.label} className="bg-white border border-indigo-200 rounded-xl p-5 text-center shadow-sm">
+            <p className="text-3xl font-black text-indigo-600 mb-1">{s.value}</p>
+            <p className="text-slate-500 text-xs leading-snug">{s.label}</p>
           </div>
         ))}
       </div>
-      <div className="bg-gradient-to-br from-cyan-500/5 to-indigo-500/5 border border-cyan-500/15 rounded-2xl p-6">
-        <p className="text-white font-bold mb-4">What This Demonstrates</p>
+      <div className="bg-gradient-to-br from-indigo-50 to-indigo-50 border border-indigo-200 rounded-2xl p-6">
+        <p className="text-slate-900 font-bold mb-4">What This Demonstrates</p>
         <div className="space-y-3">
           {demonstrates.map((d, i) => (
             <div key={i} className="flex items-start gap-3">
-              <Cpu size={14} className="text-cyan-400 mt-0.5 shrink-0" />
-              <p className="text-slate-300 text-sm leading-relaxed">{d}</p>
+              <Cpu size={14} className="text-indigo-600 mt-0.5 shrink-0" />
+              <p className="text-slate-600 text-sm leading-relaxed">{d}</p>
             </div>
           ))}
         </div>
@@ -632,21 +632,21 @@ export default function CloudOpsCaseStudy({ open, onClose }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.97 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="relative w-full max-w-6xl m-4 my-6 bg-slate-950 border border-slate-800 rounded-2xl flex flex-col overflow-hidden"
+            className="relative w-full max-w-6xl m-4 my-6 bg-white border border-indigo-100 rounded-2xl flex flex-col overflow-hidden shadow-2xl shadow-violet-100"
           >
             {/* ── Header ── */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 shrink-0">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 shrink-0 bg-white">
               <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-cyan-400 pulse-ring" />
-                <span className="text-white font-bold text-sm">CloudOps</span>
-                <span className="text-slate-600 text-xs">/ Case Study</span>
+                <div className="w-2 h-2 rounded-full bg-indigo-500 pulse-ring" />
+                <span className="text-slate-800 font-bold text-sm">CloudOps</span>
+                <span className="text-slate-400 text-xs">/ Case Study</span>
               </div>
               <div className="flex items-center gap-2">
                 <Badge text="Solo Project" color="purple" />
                 <Badge text="Qorvix — My SaaS" color="cyan" />
                 <button
                   onClick={onClose}
-                  className="ml-3 text-slate-500 hover:text-white transition p-1.5 rounded-lg hover:bg-slate-800"
+                  className="ml-3 text-slate-400 hover:text-slate-700 transition p-1.5 rounded-lg hover:bg-slate-100"
                   aria-label="Close case study"
                 >
                   <X size={18} />
@@ -658,25 +658,25 @@ export default function CloudOpsCaseStudy({ open, onClose }: Props) {
             <div className="flex flex-1 overflow-hidden">
 
               {/* ── Sidebar nav ── */}
-              <nav className="hidden md:flex flex-col w-52 shrink-0 border-r border-slate-800 py-4 overflow-y-auto">
+              <nav className="hidden md:flex flex-col w-52 shrink-0 border-r border-slate-100 py-4 overflow-y-auto bg-slate-50/60">
                 {sections.map((s, i) => (
                   <button
                     key={s.id}
                     onClick={() => setActiveSection(s.id)}
                     className={`flex items-center gap-2.5 px-4 py-2.5 text-left text-xs font-medium transition-all group relative
                       ${activeSection === s.id
-                        ? "text-cyan-400 bg-cyan-500/8"
-                        : "text-slate-500 hover:text-slate-300 hover:bg-slate-800/50"
+                        ? "text-indigo-600 bg-indigo-50"
+                        : "text-slate-500 hover:text-slate-700 hover:bg-white"
                       }`}
                   >
                     {activeSection === s.id && (
-                      <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-cyan-400 rounded-r" />
+                      <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-indigo-500 rounded-r" />
                     )}
-                    <span className={activeSection === s.id ? "text-cyan-400" : "text-slate-600 group-hover:text-slate-400"}>
+                    <span className={activeSection === s.id ? "text-indigo-600" : "text-slate-400 group-hover:text-slate-500"}>
                       {s.icon}
                     </span>
                     <span>{s.label}</span>
-                    <span className={`ml-auto text-[10px] ${activeSection === s.id ? "text-cyan-600" : "text-slate-700"}`}>
+                    <span className={`ml-auto text-[10px] ${activeSection === s.id ? "text-indigo-500" : "text-slate-300"}`}>
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </button>
@@ -684,7 +684,7 @@ export default function CloudOpsCaseStudy({ open, onClose }: Props) {
               </nav>
 
               {/* ── Content ── */}
-              <div className="flex-1 overflow-y-auto">
+              <div className="flex-1 overflow-y-auto bg-white">
                 <div className="px-6 md:px-10 py-8">
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -702,10 +702,9 @@ export default function CloudOpsCaseStudy({ open, onClose }: Props) {
             </div>
 
             {/* ── Footer nav ── */}
-            <div className="flex items-center justify-between px-6 py-3 border-t border-slate-800 shrink-0 bg-slate-950/80">
-              {/* Mobile section dropdown */}
+            <div className="flex items-center justify-between px-6 py-3 border-t border-slate-100 shrink-0 bg-slate-50/80">
               <select
-                className="md:hidden bg-slate-900 border border-slate-700 text-slate-300 text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-cyan-500"
+                className="md:hidden bg-white border border-slate-200 text-slate-600 text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-indigo-400"
                 value={activeSection}
                 onChange={e => setActiveSection(e.target.value)}
               >
@@ -717,27 +716,27 @@ export default function CloudOpsCaseStudy({ open, onClose }: Props) {
                   <button
                     key={s.id}
                     onClick={() => setActiveSection(s.id)}
-                    className={`w-1.5 h-1.5 rounded-full transition-all ${activeSection === s.id ? "bg-cyan-400 w-4" : "bg-slate-700 hover:bg-slate-500"}`}
+                    className={`w-1.5 h-1.5 rounded-full transition-all ${activeSection === s.id ? "bg-indigo-500 w-4" : "bg-slate-300 hover:bg-slate-400"}`}
                     aria-label={s.label}
                   />
                 ))}
               </div>
 
               <div className="flex items-center gap-2 ml-auto">
-                <span className="text-slate-600 text-xs mr-2">
+                <span className="text-slate-400 text-xs mr-2">
                   {currentIndex + 1} / {sections.length}
                 </span>
                 <button
                   onClick={() => navigate("prev")}
                   disabled={currentIndex === 0}
-                  className="flex items-center gap-1 text-xs text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition px-3 py-1.5 rounded-lg hover:bg-slate-800"
+                  className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-800 disabled:opacity-30 disabled:cursor-not-allowed transition px-3 py-1.5 rounded-lg hover:bg-slate-100"
                 >
                   <ChevronLeft size={14} /> Prev
                 </button>
                 <button
                   onClick={() => navigate("next")}
                   disabled={currentIndex === sections.length - 1}
-                  className="flex items-center gap-1 text-xs text-cyan-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20"
+                  className="flex items-center gap-1 text-xs text-indigo-600 hover:text-indigo-800 disabled:opacity-30 disabled:cursor-not-allowed transition px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100"
                 >
                   Next <ChevronRight size={14} />
                 </button>
