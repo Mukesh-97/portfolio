@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { projects } from "../data/projects";
-import { ArrowUpRight, BookOpen, Shield, Server, TrendingUp, Layers } from "lucide-react";
+import { ArrowUpRight, BookOpen, Shield, Server, TrendingUp, Layers, Code2, ExternalLink } from "lucide-react";
 import CloudOpsCaseStudy from "./CloudOpsCaseStudy";
 
 const projectThemes = [
@@ -152,6 +152,23 @@ export default function Projects() {
                       <span key={t} className="bg-slate-100 hover:bg-slate-200 text-slate-600 px-3 py-1 rounded-lg text-xs border border-slate-200 transition">{t}</span>
                     ))}
                   </div>
+
+                  {(project.github || project.live) && (
+                    <div className="flex gap-2 mt-5">
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg transition">
+                          <Code2 size={13} /> GitHub
+                        </a>
+                      )}
+                      {project.live && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 px-3 py-1.5 rounded-lg transition">
+                          <ExternalLink size={13} /> Live
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );

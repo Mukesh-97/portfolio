@@ -1,15 +1,6 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { MapPin, Mail, Phone, ArrowRight, ExternalLink, Award, BadgeCheck, Download, Sparkles } from "lucide-react";
-
-const roles = [
-  "Senior Cloud Engineer",
-  "DevSecOps Architect",
-  "Kubernetes Expert",
-  "AWS Solutions Architect",
-  "Infrastructure Automation Lead",
-];
+import { MapPin, Mail, Phone, ExternalLink, Award, BadgeCheck, Download, Sparkles } from "lucide-react";
 
 const techStack = [
   { label: "Cloud",      value: "AWS · GCP · Azure",         color: "text-indigo-600", dot: "bg-indigo-500" },
@@ -29,22 +20,6 @@ const containerVariant: Variants = {
 };
 
 export default function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayed, setDisplayed] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const current = roles[roleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-    if (!isDeleting && displayed.length < current.length)
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 75);
-    else if (!isDeleting && displayed.length === current.length)
-      timeout = setTimeout(() => setIsDeleting(true), 2400);
-    else if (isDeleting && displayed.length > 0)
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 35);
-    else { setIsDeleting(false); setRoleIndex(p => (p + 1) % roles.length); }
-    return () => clearTimeout(timeout);
-  }, [displayed, isDeleting, roleIndex]);
 
   return (
     <section id="about" className="relative min-h-screen flex items-center mesh-bg pt-16">
@@ -74,17 +49,20 @@ export default function Hero() {
             </h1>
           </motion.div>
 
-          <motion.div variants={itemVariant} className="mt-4 min-h-[36px] flex items-center gap-1.5">
-            <span className="text-xl font-bold text-slate-700">{displayed}</span>
-            <span className="cursor-blink text-indigo-500 text-xl font-thin">|</span>
+          <motion.div variants={itemVariant} className="mt-4">
+            <p className="text-2xl font-black text-slate-800 tracking-tight">
+              Senior Cloud &amp; DevOps Engineer
+            </p>
+            <p className="text-sm text-slate-400 font-medium mt-1">
+              AWS Solutions Architect · DevSecOps · Kubernetes · IaC
+            </p>
           </motion.div>
 
           <motion.p variants={itemVariant} className="mt-4 text-slate-500 text-sm leading-relaxed max-w-lg">
-            Certified Senior Cloud & DevOps Engineer with{" "}
             <span className="text-slate-800 font-semibold">4+ years</span> designing, automating, and
-            securing scalable infrastructure across{" "}
+            securing cloud infrastructure across{" "}
             <span className="text-indigo-600 font-semibold">AWS and GCP</span> — for enterprise,
-            startup, and government clients.
+            startup, and government clients. AWS Solutions Architect Professional certified.
           </motion.p>
 
           <motion.div variants={itemVariant} className="mt-5 flex flex-wrap gap-2">
@@ -105,16 +83,11 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={itemVariant} className="mt-6 flex flex-wrap gap-3">
-            <a href="#projects"
+            <a href="/Mukesh R_4+ Years.pdf" download="Mukesh_R_Resume.pdf"
               className="group relative flex items-center gap-2 overflow-hidden bg-gradient-to-r from-indigo-600 to-sky-500 text-white px-7 py-3.5 rounded-2xl font-semibold transition-all duration-300 shadow-lg shadow-indigo-100 hover:shadow-indigo-200 hover:-translate-y-1 hover:scale-[1.02]">
               <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-sky-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative">View Projects</span>
-              <ArrowRight size={16} className="relative group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="/Mukesh R_4+ Years.pdf" download="Mukesh_R_Resume.pdf"
-              className="group flex items-center gap-2 bg-white border border-indigo-200 hover:border-indigo-400 text-indigo-600 hover:text-indigo-700 px-7 py-3.5 rounded-2xl font-semibold shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
-              <Download size={16} className="group-hover:-translate-y-0.5 transition-transform" />
-              Resume
+              <Download size={16} className="relative group-hover:-translate-y-0.5 transition-transform" />
+              <span className="relative">Download Resume</span>
             </a>
             <a href="https://www.linkedin.com/in/mukesh-r-4543b2214" target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-2 bg-white border border-slate-200 hover:border-sky-300 text-slate-600 hover:text-slate-800 px-7 py-3.5 rounded-2xl font-semibold shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md">
